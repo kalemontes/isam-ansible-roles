@@ -5,7 +5,10 @@ import logging.config
 import sys
 import importlib
 from ansible.module_utils.basic import AnsibleModule
-from StringIO import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 import datetime
 
 from ibmsecurity.appliance.isamappliance import ISAMAppliance
@@ -15,6 +18,10 @@ from ibmsecurity.user.applianceuser import ApplianceUser
 
 logger = logging.getLogger(sys.argv[0])
 
+try:
+    basestring
+except NameError:
+    basestring = (str, bytes)
 
 def main():
     module = AnsibleModule(
@@ -103,7 +110,7 @@ def main():
     if module.check_mode is True:
         options = options + ', check_mode=True'
     if isinstance(module.params['isamapi'], dict):
-        for key, value in module.params['isamapi'].iteritems():
+        for key, value in module.params['isamapi'].items():
             if isinstance(value, basestring):
                 options = options + ', ' + key + '="' + value + '"'
             else:
