@@ -45,6 +45,7 @@
 #           "version": "1522187109"
 #       }
 
+from builtins import object
 from ansible import errors
 
 class FilterModule(object):

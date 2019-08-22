@@ -1,14 +1,15 @@
 #!/usr/bin/python
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from past.builtins import basestring
 import logging
 import logging.config
 import sys
 import importlib
 from ansible.module_utils.basic import AnsibleModule
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
+from io import StringIO
 import datetime
 
 from ibmsecurity.appliance.isamappliance import ISAMAppliance
@@ -16,11 +17,6 @@ from ibmsecurity.appliance.ibmappliance import IBMError
 from ibmsecurity.user.applianceuser import ApplianceUser
 
 logger = logging.getLogger(sys.argv[0])
-
-try:
-    basestring
-except NameError:
-    basestring = (str, bytes)
 
 
 def main():

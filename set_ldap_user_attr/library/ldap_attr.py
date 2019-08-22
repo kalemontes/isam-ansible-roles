@@ -20,6 +20,10 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 
 
+from builtins import filter
+from builtins import map
+from builtins import str
+from builtins import object
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.pycompat24 import get_exception
 
@@ -203,7 +207,7 @@ class LdapAttr(object):
 
         # Normalize values
         if isinstance(self.module.params['values'], list):
-            self.values = map(str, self.module.params['values'])
+            self.values = list(map(str, self.module.params['values']))
         else:
             self.values = [str(self.module.params['values'])]
 
@@ -211,7 +215,7 @@ class LdapAttr(object):
         self.connection = self._connect_to_ldap()
 
     def add(self):
-        values_to_add = filter(self._is_value_absent, self.values)
+        values_to_add = list(filter(self._is_value_absent, self.values))
 
         if len(values_to_add) > 0:
             modlist = [(ldap.MOD_ADD, self.name, values_to_add)]
@@ -221,7 +225,7 @@ class LdapAttr(object):
         return modlist
 
     def delete(self):
-        values_to_delete = filter(self._is_value_present, self.values)
+        values_to_delete = list(filter(self._is_value_present, self.values))
 
         if len(values_to_delete) > 0:
             modlist = [(ldap.MOD_DELETE, self.name, values_to_delete)]

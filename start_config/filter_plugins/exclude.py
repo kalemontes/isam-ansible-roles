@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from builtins import object
 from ansible import errors
 
 def exclude(a, b):

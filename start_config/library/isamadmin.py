@@ -1,11 +1,14 @@
 #!/usr/bin/python
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
 import logging
 import logging.config
 import sys
 import importlib
 from ansible.module_utils.basic import AnsibleModule
-from StringIO import StringIO
+from io import StringIO
 import datetime
 
 from ibmsecurity.appliance.isamappliance import ISAMAppliance
