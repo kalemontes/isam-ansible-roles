@@ -13,7 +13,7 @@
       junction_type:          "{{ add_junction_servers_junction_type }}"
       server_hostname:        "{{ item.server }}"
       server_port:            "{{ item.port }}"
-      server_uuid:            "{{ item.uuid }}"
+      server_uuid:            "{{ item.uuid | default(None) }}"
       server_dn:              "{{ add_junction_servers_server_dn }}"
       stateful_junction:      "{{ add_junction_servers_stateful_junction }}"
       virtual_hostname:       "{{ add_junction_servers_virtual_hostname }}"
