@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Camilo Montes
+  description: Role that fetches all Attribute Sources in the AAC (for ID lookup)
+  company: Synapse Informatique
+
+  license: Apache
+
+  min_ansible_version: 2.2
+
+  galaxy_tags:
+  - isam
+  - ibm
+  - attribute_source
+  - get
+
+dependencies:
+  - start_config
