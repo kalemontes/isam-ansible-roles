@@ -55,8 +55,5 @@
       insert_ltpa_cookies:              "{{ add_junction_insert_ltpa_cookies }}"
       http2_junction:                   "{{ add_junction_http2_junction }}"
       http2_proxy:                      "{{ add_junction_http2_proxy }}"
-      sni_name:                         "{{ add_junction_sni_name }}"   
-      second_server_hostname:           "{{ add_junction_second_hostname }}"    
-      second_server_uid:                "{{ add_junction_second_server_uid }}" 
-      second_server_port:               "{{ add_junction_second_server_port }}" 
+      sni_name:                         "{{ add_junction_sni_name }}"      
   when: add_junction_junction_point is defined and add_junction_junction_type is defined and add_junction_reverseproxy_id is defined and add_junction_server_hostname is defined and add_junction_server_port is defined
